@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+<header>
+<div class="content">
+  <div class="content__container">
+    <p class="content__container__text">
+      &nbsp; &nbsp; my
+    </p>
+    <ul class="content__container__list">
+      <li class="content__container__list__item">tasks</li>
+      <li class="content__container__list__item">chores</li>
+      <li class="content__container__list__item">errands</li>
+      <li class="content__container__list__item">list!</li>
+    </ul>
+  </div>
+</div>
+</header>
+<main>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="table-header">Description</th>
+        <th colspan="3"></th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tasks.each do |task| %>
+      <tr><td colspan="4" class="break"></td></tr>
+        <tr>
+          <td class="description"><%= task.description %></td>
+          <td class="btn-container">
+            <span class="bracket">[</span>
+              <%= link_to 'Show', task, class: "show btn" %>
+            <span class="bracket">]</span>
+          </td>
+          <td class="btn-container">
+            <span class="bracket">[</span>
+              <%= link_to 'Edit', edit_task_path(task), class: "edit btn"%>
+            <span class="bracket">]</span>
+          </td>
+          <td class="btn-container">
+            <span class="bracket">[</span>
+              <%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete btn" %>
+            <span class="bracket">]</span>
+            </td>
+        </tr>
+        
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <span class="bracket">[</span>
+    <%= link_to 'New Task', new_task_path, class:"btn new-task" %>
+  <span class="bracket">]</span>
+</main>
